@@ -17,6 +17,13 @@
       <p class="live-caption">Текущая нота</p>
       <div class="live-note" id="liveNote">—</div>
       <div class="visual-stack">
+        <div class="pitch-zoom-bar">
+          <button id="pitchZoomOut" type="button" class="pitch-zoom-btn" title="Уменьшить клавиатуру">−</button>
+          <button id="pitchZoomReset" type="button" class="pitch-zoom-btn" title="Весь диапазон">↔</button>
+          <button id="pitchZoomIn" type="button" class="pitch-zoom-btn" title="Увеличить (к текущей ноте)">+</button>
+          <button id="pitchPanLeft" type="button" class="pitch-zoom-btn" title="Сдвинуть влево" disabled>◀</button>
+          <button id="pitchPanRight" type="button" class="pitch-zoom-btn" title="Сдвинуть вправо" disabled>▶</button>
+        </div>
         <div class="pitch-visual-wrap">
           <div class="pitch-tape-scroll-col" id="pitchTapeScrollCol" hidden>
             <input type="range" id="pitchTapeScroll" class="pitch-tape-scroll"
@@ -34,7 +41,7 @@
           <summary>Записанные ноты</summary>
           <div class="sequence-body">
             <p id="emptyState" class="empty">Пока пусто.</p>
-            <ol id="noteList" class="note-list" hidden></ol>
+            <ul id="noteList" class="note-list" hidden></ul>
           </div>
         </details>
       </div>
