@@ -14,10 +14,14 @@
     </header>
 
     <section class="live" aria-live="polite">
+      <p class="live-caption">Текущая нота</p>
       <div class="live-note" id="liveNote">—</div>
+      <div class="pitch-visual-wrap">
+        <canvas id="pitchVisualCanvas" class="pitch-visual-canvas" aria-hidden="true"></canvas>
+      </div>
       <div class="live-meta">
         <span id="liveFreq">— Hz</span>
-        <span id="liveRu"></span>
+        <span id="liveMelody" class="live-melody"></span>
       </div>
       <div id="liveFingering" class="live-fingering"></div>
       <p id="liveHint" class="hint">Нажмите «Слушать» и играйте на флейте или напевайте.</p>
@@ -33,12 +37,26 @@
 
     <p class="mic-note">Расширение нельзя добавить вручную в список сайтов на странице «Микрофон» — только через «Разрешения расширения» или запрос при «Слушать».</p>
 
+    <div class="input-source-row">
+      <label class="input-source-label" for="inputSourceSelect">Источник звука</label>
+      <select id="inputSourceSelect" class="input-source-select">
+        <option value="mic">Микрофон</option>
+        <option value="tab">Звук вкладки (YouTube)</option>
+      </select>
+    </div>
+    <p id="tabTargetHint" class="tab-target-hint" hidden></p>
+
     <div class="buttons">
       <button id="startBtn" type="button">Слушать</button>
       <button id="stopBtn" type="button" disabled>Стоп</button>
       <button id="clearBtn" type="button" disabled>Очистить</button>
       <button id="undoBtn" type="button" disabled>Убрать последнюю</button>
     </div>
+
+    <details id="settingsPanel" class="settings-panel">
+      <summary>Настройки</summary>
+      <div id="settingsForm" class="settings-form"></div>
+    </details>
 
     <section class="sequence">
       <h2>Записанные ноты</h2>

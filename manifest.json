@@ -1,12 +1,19 @@
 {
   "manifest_version": 3,
   "name": "Флейта — табы",
-  "description": "Слушает микрофон, записывает ноты и показывает аппликатуру блокфлейты сопрано в C.",
-  "version": "1.1.0",
+  "description": "Слушает микрофон или звук вкладки, записывает ноты и показывает аппликатуру блокфлейты.",
+  "version": "1.6.0",
   "minimum_chrome_version": "116",
   "permissions": [
     "sidePanel",
-    "tabs"
+    "storage",
+    "tabs",
+    "tabCapture",
+    "activeTab",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "action": {
     "default_title": "Флейта — табы"
@@ -15,6 +22,7 @@
     "default_path": "sidepanel/sidepanel.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   }
 }
