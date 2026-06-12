@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Флейта — табы",
   "description": "Слушает микрофон, записывает ноты и показывает аппликатуру блокфлейты сопрано в C.",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "minimum_chrome_version": "116",
   "permissions": [
     "sidePanel",
