@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Флейта — табы</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Флейта — табы</h1>
+      <p class="subtitle">Сопрано в C · микрофон → ноты → аппликатура</p>
+    </header>
+
+    <section class="live" aria-live="polite">
+      <div class="live-note" id="liveNote">—</div>
+      <div class="live-meta">
+        <span id="liveFreq">— Hz</span>
+        <span id="liveRu"></span>
+      </div>
+      <div id="liveFingering" class="live-fingering"></div>
+      <p id="liveHint" class="hint">Нажмите «Слушать» и играйте на флейте или напевайте.</p>
+    </section>
+
+    <div id="micHelp" class="mic-help" hidden>
+      <p class="mic-help-text"></p>
+      <div class="mic-help-actions">
+        <button id="openMicSettingsBtn" type="button" class="link-btn">Разрешения расширения</button>
+        <button id="openAppTabBtn" type="button" class="link-btn">Открыть во вкладке</button>
+      </div>
+    </div>
+
+    <p class="mic-note">Расширение нельзя добавить вручную в список сайтов на странице «Микрофон» — только через «Разрешения расширения» или запрос при «Слушать».</p>
+
+    <div class="buttons">
+      <button id="startBtn" type="button">Слушать</button>
+      <button id="stopBtn" type="button" disabled>Стоп</button>
+      <button id="clearBtn" type="button" disabled>Очистить</button>
+      <button id="undoBtn" type="button" disabled>Убрать последнюю</button>
+    </div>
+
+    <section class="sequence">
+      <h2>Записанные ноты</h2>
+      <p id="emptyState" class="empty">Пока пусто — сыграйте мелодию.</p>
+      <ol id="noteList" class="note-list" hidden></ol>
+    </section>
+  </main>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  min-width: 280px;
+  font: 14px/1.4 system-ui, sans-serif;
+  color: #1c1c1c;
+  background: #f6f8fb;
+}
+
+.launcher {
+  padding: 16px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+p {
+  margin: 0 0 12px;
+  color: #5c6672;
+  font-size: 13px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #1a5fb4;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1c71d8;
+}
+
+.hint {
+  margin-top: 10px !important;
+  font-size: 12px !important;
+}
