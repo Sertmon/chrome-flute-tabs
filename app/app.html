@@ -21,7 +21,13 @@
       <div class="live-note" id="liveNote">—</div>
       <div class="visual-stack">
         <div class="pitch-visual-wrap">
-          <canvas id="pitchVisualCanvas" class="pitch-visual-canvas" aria-hidden="true"></canvas>
+          <div class="pitch-tape-scroll-col" id="pitchTapeScrollCol" hidden>
+            <input type="range" id="pitchTapeScroll" class="pitch-tape-scroll"
+              min="0" max="1000" value="0" aria-label="Прокрутка ленты">
+          </div>
+          <div class="pitch-visual-canvas-host">
+            <canvas id="pitchVisualCanvas" class="pitch-visual-canvas" aria-hidden="true"></canvas>
+          </div>
         </div>
         <div class="live-meta">
           <span id="liveFreq">— Hz</span>
