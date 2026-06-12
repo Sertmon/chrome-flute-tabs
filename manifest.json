@@ -2,18 +2,13 @@
   "manifest_version": 3,
   "name": "Флейта — табы",
   "description": "Слушает микрофон или звук вкладки, записывает ноты и показывает аппликатуру блокфлейты.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "minimum_chrome_version": "116",
   "permissions": [
     "sidePanel",
     "storage",
     "tabs",
-    "tabCapture",
-    "activeTab",
-    "offscreen"
-  ],
-  "host_permissions": [
-    "<all_urls>"
+    "tabCapture"
   ],
   "action": {
     "default_title": "Флейта — табы"

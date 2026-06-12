@@ -8,50 +8,50 @@ const required = [
   'manifest.json',
   'background.js',
   'sidepanel/sidepanel.html',
-  'sidepanel/sidepanel.js',
   'lib/app.js',
   'lib/tab-audio-stream.js',
-  'lib/storage-session.js',
+];
+
+const forbidden = [
+  'offscreen/offscreen.js',
+  'lib/tab-pitch-channel.js',
 ];
 
 let failed = false;
 
 for (const rel of required) {
-  const path = join(root, rel);
-  if (!existsSync(path)) {
+  if (!existsSync(join(root, rel))) {
     console.error(`MISSING: ${rel}`);
     failed = true;
   }
 }
 
-try {
-  const manifest = JSON.parse(readFileSync(join(root, 'manifest.json'), 'utf8'));
-  if (manifest.background?.type !== 'module') {
-    console.error('manifest: background.type should be module');
+for (const rel of forbidden) {
+  if (existsSync(join(root, rel))) {
+    console.error(`SHOULD BE REMOVED: ${rel}`);
     failed = true;
   }
-  if (!manifest.permissions?.includes('storage')) {
-    console.error('manifest: missing storage permission');
-    failed = true;
-  }
-} catch (error) {
-  console.error('manifest.json invalid:', error.message);
-  failed = true;
 }
 
-const tabAudio = readFileSync(join(root, 'lib/tab-audio-stream.js'), 'utf8');
-if (tabAudio.includes('preferCurrentTab') || tabAudio.includes('selfBrowserSurface')) {
-  console.error('tab-audio-stream: contradictory getDisplayMedia options still present');
+const manifest = JSON.parse(readFileSync(join(root, 'manifest.json'), 'utf8'));
+if (!manifest.permissions?.includes('tabCapture')) {
+  console.error('manifest: tab mode needs tabCapture permission');
+  failed = true;
+}
+if (manifest.permissions?.includes('offscreen')) {
+  console.error('manifest: remove unused offscreen');
   failed = true;
 }
 
 const app = readFileSync(join(root, 'lib/app.js'), 'utf8');
-if (app.includes('beginTabAudioCapture')) {
-  console.error('app.js: should not use broken offscreen tab capture on Listen');
+if (!app.includes('openTabCaptureAudioStream')) {
+  console.error('app.js: tab mode must use tabCapture');
   failed = true;
 }
-if (!app.includes('openDisplayMediaAudioStream')) {
-  console.error('app.js: tab mode should use openDisplayMediaAudioStream');
+
+const stream = readFileSync(join(root, 'lib/tab-audio-stream.js'), 'utf8');
+if (!stream.includes('chrome.tabCapture.capture')) {
+  console.error('tab-audio-stream.js: must use chrome.tabCapture.capture');
   failed = true;
 }
 
