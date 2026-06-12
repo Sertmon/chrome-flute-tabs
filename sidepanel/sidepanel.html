@@ -16,12 +16,21 @@
     <section class="live" aria-live="polite">
       <p class="live-caption">Текущая нота</p>
       <div class="live-note" id="liveNote">—</div>
-      <div class="pitch-visual-wrap">
-        <canvas id="pitchVisualCanvas" class="pitch-visual-canvas" aria-hidden="true"></canvas>
-      </div>
-      <div class="live-meta">
-        <span id="liveFreq">— Hz</span>
-        <span id="liveMelody" class="live-melody"></span>
+      <div class="visual-stack">
+        <div class="pitch-visual-wrap">
+          <canvas id="pitchVisualCanvas" class="pitch-visual-canvas" aria-hidden="true"></canvas>
+        </div>
+        <div class="live-meta">
+          <span id="liveFreq">— Hz</span>
+          <span id="liveMelody" class="live-melody"></span>
+        </div>
+        <details id="notesPanel" class="sequence-panel" open>
+          <summary>Записанные ноты</summary>
+          <div class="sequence-body">
+            <p id="emptyState" class="empty">Пока пусто.</p>
+            <ol id="noteList" class="note-list" hidden></ol>
+          </div>
+        </details>
       </div>
       <div id="liveFingering" class="live-fingering"></div>
       <p id="liveHint" class="hint">Нажмите «Слушать» и играйте на флейте или напевайте.</p>
@@ -51,6 +60,7 @@
       <button id="stopBtn" type="button" disabled>Стоп</button>
       <button id="clearBtn" type="button" disabled>Очистить</button>
       <button id="undoBtn" type="button" disabled>Убрать последнюю</button>
+      <button id="saveNotesBtn" type="button" disabled>Сохранить</button>
     </div>
 
     <details id="settingsPanel" class="settings-panel">
@@ -58,11 +68,6 @@
       <div id="settingsForm" class="settings-form"></div>
     </details>
 
-    <section class="sequence">
-      <h2>Записанные ноты</h2>
-      <p id="emptyState" class="empty">Пока пусто — сыграйте мелодию.</p>
-      <ol id="noteList" class="note-list" hidden></ol>
-    </section>
   </main>
   <script type="module" src="sidepanel.js"></script>
 </body>
